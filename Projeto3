@@ -1,0 +1,22 @@
+async function showMovieDetails(movieId) {
+    const movie = await fetchMovieDetails(movieId);
+    const detailsContainer = document.getElementById('movie-details');
+    detailsContainer.innerHTML = `
+        <h1>${movie.title}</h1>
+        <p>${movie.overview}</p>
+        <p>Data de lançamento: ${movie.release_date}</p>
+        <p>Nota: ${movie.vote_average}</p>
+        <img src="https://image.tmdb.org/t/p/w500${movie.poster_path}" alt="${movie.title}">
+    `;
+}
+
+async function showTVDetails(tvId) {
+    const tv = await fetchTVDetails(tvId);
+    const detailsContainer = document.getElementById('tv-details');
+    detailsContainer.innerHTML = `
+        <h1>${tv.name}</h1>
+        <p>${tv.overview}</p>
+        <p>Data de estreia: ${tv.first_air_date}</p>
+        <p>Nota: ${tv.vote_average}</p>
+        <img src="https://image.tmdb.org/t/p/w500${tv.poster_path}" alt="${tv.name}">
+    `;
